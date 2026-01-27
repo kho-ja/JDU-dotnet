@@ -1,0 +1,53 @@
+@model RazorDemoViewModel
+
+@{
+    ViewData["Title"] = "Razor Demo";
+    var year = DateTime.Now.Year;
+    var greeting = Model.IsLoggedIn ? "Xush kelibsiz!" : "Iltimos, tizimga kiring.";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Title</h1>
+    <p>@greeting</p>
+    <p>Yil: @year</p>
+    <p>Yaratilgan vaqt: @Model.GeneratedAt.ToString("HH:mm:ss")</p>
+</div>
+
+@if (ViewData["Message"] is string message)
+{
+    <div class="alert alert-success mt-3">@message</div>
+}
+
+<section class="mt-4">
+    <h2>Talabalar ro'yxati</h2>
+    <p>Bugungi tashriflar: <strong>@Model.VisitsToday</strong></p>
+    <div class="row">
+        @foreach (var student in Model.Students)
+        {
+            <div class="col-md-4 mb-3">
+                @await Html.PartialAsync("_StudentCard", student)
+            </div>
+        }
+    </div>
+</section>
+
+<section class="mt-4">
+    <h2>Talaba qo'shish formasi</h2>
+    <form asp-action="Submit" method="post" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label" asp-for="Form.Name">Ism</label>
+            <input class="form-control" asp-for="Form.Name" />
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" asp-for="Form.Age">Yosh</label>
+            <input class="form-control" asp-for="Form.Age" type="number" min="1" />
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" asp-for="Form.Major">Yo'nalish</label>
+            <input class="form-control" asp-for="Form.Major" />
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Yuborish</button>
+        </div>
+    </form>
+</section>
