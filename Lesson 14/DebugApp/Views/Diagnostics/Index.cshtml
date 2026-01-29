@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Diagnostics";
+}
+
+<h1>Diagnostics</h1>
+
+<ul>
+    <li><a asp-action="Add" asp-route-a="2" asp-route-b="3">Add (2 + 3)</a></li>
+    <li><a asp-action="Divide" asp-route-a="10" asp-route-b="2">Divide (10 / 2)</a></li>
+    <li><a asp-action="Divide" asp-route-a="10" asp-route-b="0">Divide (10 / 0) - error</a></li>
+    <li><a asp-action="Throw">Throw exception</a></li>
+</ul>
+
+<p class="text-muted">
+    Bu sahifadan logging va exception handlingni ko'rishingiz mumkin.
+</p>
