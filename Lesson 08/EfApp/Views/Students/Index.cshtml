@@ -1,0 +1,33 @@
+@model List<EfApp.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Yangi qo'shish</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ism</th>
+            <th>Yosh</th>
+            <th>Yo'nalish</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Major</td>
+            </tr>
+        }
+    </tbody>
+</table>
