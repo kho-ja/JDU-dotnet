@@ -1,0 +1,18 @@
+@model BindingApp.Models.Student
+
+@{
+    ViewData["Title"] = "Natija";
+}
+
+<h1>Yuborilgan ma'lumotlar</h1>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <p><strong>Ism:</strong> @Model.Name</p>
+        <p><strong>Yosh:</strong> @Model.Age</p>
+        <p><strong>Yo'nalish:</strong> @Model.Major</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+    </div>
+</div>
+
+<a class="btn btn-link mt-3" asp-action="Index">Orqaga</a>
