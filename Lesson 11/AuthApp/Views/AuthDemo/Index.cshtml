@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Auth Demo";
+}
+
+<h1>Autentifikatsiya va Avtorizatsiya</h1>
+
+<ul>
+    <li><a asp-action="CookieProtected">Cookie protected</a> (login required)</li>
+    <li><a asp-action="AdminOnly">Admin role</a> (Admin kerak)</li>
+    <li><a asp-action="SessionDemo">Session demo</a> (login required)</li>
+</ul>
+
+<h3>JWT Login (POST)</h3>
+<p>Endpoint: <code>/AuthDemo/JwtLogin</code></p>
+<p>Body:</p>
+<pre>{
+  "email": "admin@local",
+  "password": "Admin123!"
+}</pre>
+
+<h3>JWT Protected</h3>
+<p>Endpoint: <code>/AuthDemo/JwtProtected</code></p>
+<p>Header: <code>Authorization: Bearer &lt;token&gt;</code></p>
