@@ -1,0 +1,77 @@
+@model List<EfCrudApp.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<div class="mb-3">
+    <a class="btn btn-primary" asp-action="Create">Yangi qo'shish</a>
+</div>
+
+<form method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+        <label class="form-label">Ism bo'yicha qidirish</label>
+        <input class="form-control" name="search" value="@ViewData["Search"]" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Yo'nalish</label>
+        <input class="form-control" name="major" value="@ViewData["Major"]" />
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Min yosh</label>
+        <input class="form-control" type="number" name="minAge" value="@ViewData["MinAge"]" />
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Max yosh</label>
+        <input class="form-control" type="number" name="maxAge" value="@ViewData["MaxAge"]" />
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Tartib</label>
+        <select class="form-select" name="sort">
+            <option value="id" selected="@(ViewData["Sort"]?.ToString() == "id")">Id</option>
+            <option value="name" selected="@(ViewData["Sort"]?.ToString() == "name")">Ism</option>
+            <option value="age" selected="@(ViewData["Sort"]?.ToString() == "age")">Yosh</option>
+            <option value="major" selected="@(ViewData["Sort"]?.ToString() == "major")">Yo'nalish</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Tartib turi</label>
+        <select class="form-select" name="order">
+            <option value="asc" selected="@(ViewData["Order"]?.ToString() == "asc")">O'sish</option>
+            <option value="desc" selected="@(ViewData["Order"]?.ToString() == "desc")">Kamayish</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-outline-primary" type="submit">Filter</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Tozalash</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ism</th>
+            <th>Yosh</th>
+            <th>Yo'nalish</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Major</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@student.Id">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@student.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

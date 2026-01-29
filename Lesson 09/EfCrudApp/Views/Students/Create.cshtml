@@ -1,0 +1,38 @@
+@model EfCrudApp.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<h1>Yangi student</h1>
+
+<form asp-action="Create" method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" type="number" min="1" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Major" class="form-label"></label>
+        <input asp-for="Major" class="form-control" />
+        <span asp-validation-for="Major" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Saqlash</button>
+        <a class="btn btn-secondary" asp-action="Index">Orqaga</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
