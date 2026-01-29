@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Session va Cookies";
+    var counter = (int)(ViewData["Counter"] ?? 0);
+    var userId = ViewData["UserId"]?.ToString() ?? "anonymous";
+    var userName = ViewData["UserName"]?.ToString() ?? "Mehmon";
+}
+
+<h1>Session va Cookies</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Session</h5>
+                <p>Counter: <strong>@counter</strong></p>
+                <form asp-action="Increment" method="post" class="d-inline">
+                    <button class="btn btn-primary" type="submit">+1</button>
+                </form>
+                <form asp-action="ResetSession" method="post" class="d-inline">
+                    <button class="btn btn-outline-secondary" type="submit">Reset</button>
+                </form>
+                <p class="text-muted mt-2">Session timeout: 20 daqiqa</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Cookies</h5>
+                <p>User ID: <strong>@userId</strong></p>
+                <p>User Name: <strong>@userName</strong></p>
+                <form asp-action="SetCookie" method="post" class="mb-2">
+                    <div class="input-group">
+                        <input class="form-control" name="userName" placeholder="Ism kiriting" />
+                        <button class="btn btn-primary" type="submit">Saqlash</button>
+                    </div>
+                </form>
+                <form asp-action="ClearCookies" method="post">
+                    <button class="btn btn-outline-danger" type="submit">Cookie tozalash</button>
+                </form>
+                <p class="text-muted mt-2">Cookie expiration: 7 kun</p>
+            </div>
+        </div>
+    </div>
+</div>
