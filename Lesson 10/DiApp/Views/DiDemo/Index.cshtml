@@ -1,0 +1,44 @@
+@model Dictionary<string, string>
+
+@{
+    ViewData["Title"] = "DI Demo";
+}
+
+<h1>Dependency Injection va Service Lifetimes</h1>
+
+<p>@(Model.TryGetValue("Greeting", out var greeting) ? greeting : "Salom!")</p>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>ID (Lifetime)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Singleton</td>
+            <td>@Model["Singleton"]</td>
+        </tr>
+        <tr>
+            <td>Scoped</td>
+            <td>@Model["Scoped"]</td>
+        </tr>
+        <tr>
+            <td>Transient</td>
+            <td>@Model["Transient"]</td>
+        </tr>
+        <tr>
+            <td>RequestTracker (Scoped)</td>
+            <td>@Model["RequestTracker"]</td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="text-muted">
+    Bir xil request ichida Scoped bir xil bo'ladi, Transient har safar o'zgaradi,
+    Singleton esa butun ilova davomida bir xil qoladi.
+</p>
+
+<a class="btn btn-outline-primary" asp-action="Index">Refresh (Index)</a>
+<a class="btn btn-outline-secondary" asp-action="Second">Other Action</a>
