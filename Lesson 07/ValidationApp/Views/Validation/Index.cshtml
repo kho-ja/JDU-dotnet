@@ -1,0 +1,60 @@
+@model ValidationApp.Models.StudentRegistration
+
+@{
+    ViewData["Title"] = "Data Validation";
+}
+
+<h1>Data Validation</h1>
+
+<p class="text-muted">
+    Client-side validation JavaScript orqali tezkor tekshiradi,
+    server-side validation esa har doim serverda qayta tekshiradi.
+</p>
+
+<form asp-action="Index" method="post" class="row g-3">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Surname" class="form-label"></label>
+        <input asp-for="Surname" class="form-control" />
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" type="number" min="1" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Major" class="form-label"></label>
+        <input asp-for="Major" class="form-control" />
+        <span asp-validation-for="Major" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="StudentId" class="form-label"></label>
+        <input asp-for="StudentId" class="form-control" placeholder="ST-1234" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Yuborish</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
